@@ -1,8 +1,4 @@
 后端
-   1. RestEasy 最新版
-   2. SpringBoot最新版
-   3. Mybatis最新版
-   4. MySql5.7
 
 <hr/>
 
@@ -12,13 +8,10 @@
 - 统一依赖
   - SpringBoot 最新版
   - mybatis最新版
-  - mysql 5.7
+  - mysql 8
   - pager helper
-  - RestEasy 最新版
-  - dubbox最新版
   - mybatis-mapper 快速开发
   - lombok
-  - docker
   - apache-common
   - fastjson
   - log4j(logback)
@@ -83,4 +76,6 @@
   - 评论管理
     - 根据文章分类，是否开启评论。
     - 根据具体文章，是否允许评论。
-  - 
+    
+- **xy-blog-registry-center**
+   - 服务注册中心
