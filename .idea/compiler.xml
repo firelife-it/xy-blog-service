@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="xy-blog-user" />
+        <module name="xy-blog-log" />
+        <module name="xy-blog-article" />
+        <module name="xy-blog-common" />
+        <module name="xy-blog-management" />
+        <module name="xy-blog-dependency" />
+        <module name="xy-blog-comment" />
+        <module name="xy-blog-security" />
+        <module name="xy-blog-core" />
+        <module name="xy-blog-developer-tools" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="xy-blog-article" options="-parameters" />
+      <module name="xy-blog-comment" options="-parameters" />
+      <module name="xy-blog-common" options="-parameters" />
+      <module name="xy-blog-core" options="-parameters" />
+      <module name="xy-blog-dependency" options="-parameters" />
+      <module name="xy-blog-developer-tools" options="-parameters" />
+      <module name="xy-blog-log" options="-parameters" />
+      <module name="xy-blog-management" options="-parameters" />
+      <module name="xy-blog-security" options="-parameters" />
+      <module name="xy-blog-user" options="-parameters" />
+    </option>
+  </component>
+</project>

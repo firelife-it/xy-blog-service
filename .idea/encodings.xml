@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/xy-blog-article" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xy-blog-comment" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xy-blog-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xy-blog-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xy-blog-dependency" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xy-blog-developer-tools" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xy-blog-log" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xy-blog-management" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xy-blog-security" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xy-blog-user" charset="UTF-8" />
+  </component>
+</project>
