@@ -8,7 +8,7 @@
         <version>2.1.9.RELEASE</version>
         <relativePath/>
     </parent>
-    <groupId>com.xy.dependency</groupId>
+    <groupId>com.xy</groupId>
     <artifactId>xy-blog-dependency</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>xy-blog-dependency</name>
