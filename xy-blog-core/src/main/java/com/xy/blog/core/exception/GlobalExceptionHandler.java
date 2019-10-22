@@ -1,4 +1,4 @@
-package com.xy.blog.common.exception;
+package com.xy.blog.core.exception;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
