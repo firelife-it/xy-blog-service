@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!-- mybaties逆向生成xml配置 -->
+<generatorConfiguration>
+    <!-- 数据库连接配置文件 -->
+    <properties resource="application.properties"/>
+    <context id="mysqlTables" targetRuntime="MyBatis3">
+
+        <!-- 生成的pojo，将implements SerializablePlugin -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <commentGenerator>
+            <!--是否去除自动生成的注释 true：是，false：否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!-- 数据库连接URL、用户名、密码 -->
+        <jdbcConnection
+                driverClass="${spring.datasource.driver-class-name}"
+                connectionURL="${spring.datasource.url}"
+                userId="${spring.datasource.username}"
+                password="${spring.datasource.password}">
+
+        </jdbcConnection>
+        <!--
+            默认false，把JDBC DECIMAL和NUMBERIC类型解析为Integer
+            true：把JDBC DECIMAL和NUMERIC类型解析为java.math.BigDecimal
+         -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!--
+            生成model模型，对应的包路径，以及文件存放路径（targetProject），targetProject可以指定具体的路径，
+            如./src/main/java
+         -->
+
+        <javaModelGenerator targetPackage="cn.muriel.pojo" targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <!-- 从数据库返回的值被清理前后的空格 -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- 对应的mapper.xml文件 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="./src/main/resources">
+            <property name="enablesSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!-- 对应的Mapper接口类文件 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="c.mapper" targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+        <!-- 列出来要生成代码的所有表，这里配置的是不生成Example文件 -->
+        <!--
+            domainObjectName：指生成文件的基本名称。若不指定，将根据tableName自动生成名称
+            enableCountByExample：表示是否应生成按语句计数的语句。此语句将返回表中与示例匹配的行数，默认为true
+            enableDeleteByExample：表示是否应生成按示例删除语句。此语句允许在运行时生成许多不同的动态删除。默认为true。
+            enableUpdatebyExample：表示是否应生成示例语句的更新。此语句将更更新表中与示例匹配的行。如果为true，则还将生成示例"selective"语句更新。
+                                   "selective"语句只会更新record参数中的相应值为非null的列。默认值为true
+            enableSelectByExample：表示是否应生成select by example语句。此语句允许在运行时生成许多不同的动态查询。默认为true
+
+        -->
+        <table tableName="user"
+               enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"
+               enableSelectByExample="false" selectByPrimaryKeyQueryId="false">
+            <property name="userActualColumnNames" value="false"/>
+        </table>
+
+
+    </context>
+</generatorConfiguration>

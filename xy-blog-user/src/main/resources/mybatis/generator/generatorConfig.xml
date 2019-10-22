@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--导入属性配置-->
+    <properties resource="mybatis/generator/config.properties"/>
+
+    <!-- 指定数据库驱动的jdbc驱动jar包的位置 -->
+    <!--<classPathEntry location="${db.driverLocation}" />-->
+
+    <!-- context 是逆向工程的主要配置信息 -->
+    <!-- id：起个名字 -->
+    <!-- targetRuntime：设置生成的文件适用于那个 mybatis 版本 -->
+    <context id="default" targetRuntime="MyBatis3">
+
+        <!-- 生成的Java文件的编码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 格式化java代码 -->
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <!-- JavaBean 实现 序列化 接口 -->
+        <!--<plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>-->
+        <!-- genenat entity时,生成toString -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <!-- 自定义物理分页  可生成支持Mysql数据的limit  不支持Oracle -->
+        <!--<plugin type="org.mybatis.generator.plugins.page.PaginationPlugin" />-->
+        <!-- 自定义查询指定字段  -->
+        <!--<plugin type="org.mybatis.generator.plugins.field.FieldsPlugin" />-->
+        <!-- 开启支持内存分页   可生成 支持内存分布的方法及参数 -->
+        <!--<plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" />-->
+        <!-- generate entity时，生成hashcode和equals方法-->
+        <!--<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />-->
+
+        <!-- 此处是将Example改名为Criteria 当然 想改成什么都行~    -->
+        <!--<plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">-->
+        <!--<property name="searchString" value="Example$" />-->
+        <!--<!– 替换后  -->
+        <!--<property name="replaceString" value="Criteria" />    -->
+        <!--–>-->
+        <!--<property name="replaceString" value="Query" />-->
+        <!--</plugin>-->
+
+        <!-- 此处是将UserMapper.xml改名为UserDao.xml 当然 想改成什么都行~ -->
+        <!--<plugin type="org.mybatis.generator.plugins.rename.RenameSqlMapperPlugin">-->
+        <!--<property name="searchString" value="Mapper" />-->
+        <!--<property name="replaceString" value="Dao" />-->
+        <!--</plugin>-->
+
+        <!--<!– 此处是将UserMapper改名为UserDao 接口 当然 想改成什么都行~  –>-->
+        <!--<plugin type="org.mybatis.generator.plugins.rename.RenameJavaMapperPlugin">-->
+        <!--<property name="searchString" value="Mapper$" />-->
+        <!--<property name="replaceString" value="Dao" />-->
+        <!--</plugin>-->
+
+
+        <!--optional,旨在创建class时，对注释进行控制-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--jdbc的数据库连接-->
+        <jdbcConnection driverClass="${db.driverClassName}"
+                        connectionURL="${db.url}"
+                        userId="${db.username}"
+                        password="${db.password}">
+        </jdbcConnection>
+
+        <!--非必须，类型处理器，在数据库类型和java类型之间的转换控制-->
+        <javaTypeResolver>
+            <!-- 默认情况下数据库中的 decimal，bigInt 在 Java 对应是 sql 下的 BigDecimal 类 -->
+            <!-- 不是 double 和 long 类型 -->
+            <!-- 使用常用的基本类型代替 sql 包下的引用类型 -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- javaModelGenerator-生成模型(实体)的包名和位置 -->
+        <!-- targetPackage：生成的实体类所在的包 -->
+        <!-- targetProject：生成的实体类所在的硬盘位置 -->
+        <javaModelGenerator targetPackage="${entity.package.name}"
+                            targetProject="${target.location}">
+            <!-- 是否允许子包 -->
+            <property name="enableSubPackages" value="false"/>
+            <!-- 是否对modal添加构造函数 -->
+            <property name="constructorBased" value="true"/>
+            <!-- 是否清理从数据库中查询出的字符串左右两边的空白字符 -->
+            <property name="trimStrings" value="true"/>
+            <!-- 建立modal对象是否不可改变 即生成的modal对象不会有setter方法，只有构造方法 -->
+            <property name="immutable" value="false"/>
+        </javaModelGenerator>
+
+        <!-- sqlMapGenerator-生成生成映射文件的包名和位置 -->
+        <!-- targetPackage 和 targetProject：生成的 mapper 文件的包和位置 -->
+        <sqlMapGenerator targetPackage="${mapperxml.package.name}"
+                         targetProject="${target.location}">
+            <!-- 针对数据库的一个配置，是否把 schema 作为字包名 -->
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!-- javaClientGenerator-生成DAO的包名和位置 -->
+        <!-- targetPackage 和 targetProject：生成的 interface 文件的包和位置 -->
+        <!--ANNOTATEDMAPPER: 生成java类文件,基于注解的Mapper接口，不会有对应的XML映射文件
+            MIXEDMAPPER:XML和注解的混合形式
+            XMLMAPPER:所有的方法都在XML中，接口调用依赖XML文件 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="${dao.package.name}" targetProject="${target.location}">
+            <!-- 针对 oracle 数据库的一个配置，是否把 schema 作为字包名 -->
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+        <!-- table 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名 -->
+        <table tableName="${table.name}" domainObjectName="${entity.name}"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+    </context>
+</generatorConfiguration>
