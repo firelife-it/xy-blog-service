@@ -1,5 +1,9 @@
 package com.xy.blog.user.dao.model;
 
+import lombok.Data;
+
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
 /**
@@ -8,8 +12,10 @@ import java.util.Date;
  * @Description: 用户DO
  * @date 2019/10/21 21:45
  */
-
+@Data
+@Table(name = "t_user")
 public class UserDO {
+    @Id
     private String id;
     private String userName;
     private String email;
